@@ -1,11 +1,11 @@
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView, StyleSheet, Text, View } from "react-native";
-import SignInScreen from "./src/screens/SignInScreen";
+import Navigation from "./src/navigaton";
 
 const App = () => {
   return (
     <SafeAreaView style={styles.root}>
-      <SignInScreen />
+      <Navigation />
       <StatusBar style="auto" />
     </SafeAreaView>
   );
