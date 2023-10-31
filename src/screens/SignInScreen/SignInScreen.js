@@ -36,14 +36,15 @@ const SignInScreen = () => {
     navigation.navigate("SignUpScreen");
   };
 
+  text = "Hello\nWellcome Back!";
+
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.root}>
-        <Image
-          source={Logo}
-          style={[styles.logo, { height: height * 0.3 }]}
-          resizeMode="contain"
-        />
+        <View style={styles.greetingMess}>
+          <Text style={styles.text}>{text}</Text>
+        </View>
+
         <CustomInput
           placeholder="Username"
           value={userName}
@@ -85,5 +86,14 @@ const styles = StyleSheet.create({
     width: "70%",
     maxWidth: 500,
     maxHeight: 200,
+  },
+  greetingMess: {
+    alignSelf: "left",
+    paddingTop: 100,
+    paddingBottom: 100,
+  },
+  text: {
+    fontSize: 34,
+    alignSelf: "right",
   },
 });

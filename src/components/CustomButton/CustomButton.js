@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   container_PRIMARY: {
-    backgroundColor: "#3b71f3",
+    backgroundColor: "#FFD800",
   },
   container_SECONDARY: {
     borderColor: "#3b71f3",
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
   container_TERTIARY: {},
   text: {
     fontWeight: "bold",
-    color: "white",
+    color: "#0056B9",
   },
   text_TERTIARY: {
     color: "grey",
