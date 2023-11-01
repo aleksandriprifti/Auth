@@ -3,12 +3,15 @@ import React, { useState } from "react";
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
 import SocialSignInButtons from "../../components/SocilaSignInButtons/SocialSignInButtons";
+import { useNavigation } from "@react-navigation/native";
 
 const ForgotPasswordScreen = () => {
   const [userName, setUserName] = useState();
 
+  const navigation = useNavigation();
+
   const onSignInPressed = () => {
-    console.warn("register in");
+    navigation.navigate("SignIn");
   };
 
   const onConfirmPressed = () => {

@@ -5,21 +5,40 @@ import {
   StyleSheet,
   useWindowDimensions,
   ScrollView,
+  TextInput,
 } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Logo from "../../../assets/images/Logo_1.png";
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
 import SocialSignInButtons from "../../components/SocilaSignInButtons/SocialSignInButtons";
 import { useNavigation } from "@react-navigation/native";
+import { AuthContext, useAuth } from "../../context/AuthContext";
 
 const SignInScreen = () => {
-  const [userName, setUserName] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { onLogin, onRegister } = useAuth();
 
   const navigation = useNavigation();
 
   const { height } = useWindowDimensions();
+
+  const login = async () => {
+    const result = await onLogin(email, password);
+    if (result && result.error) {
+      alert(result.msg);
+    }
+  };
+
+  const register = async () => {
+    const result = await onRegister(email, password);
+    if (result && result.error) {
+      alert(result.msg);
+    } else {
+      login();
+    }
+  };
 
   const onSignInPress = () => {
     console.warn("register in");
@@ -44,19 +63,27 @@ const SignInScreen = () => {
         <View style={styles.greetingMess}>
           <Text style={styles.text}>{text}</Text>
         </View>
+        <View style={styles.buttons}>
+          <TextInput
+            placeholder="Email"
+            onChangeText={(text) => setEmail(text)}
+            value={email}
+          />
+          <TextInput
+            placeholder="Password"
+            value={password}
+            onChangeText={(text) => setPassword(text)}
+            secureTextEntry={true}
+          />
+        </View>
 
-        <CustomInput
-          placeholder="Username"
-          value={userName}
-          setValue={setUserName}
+        <CustomButton
+          text="Sign In"
+          // onPress={() => {
+          //   login();
+          // }}
         />
-        <CustomInput
-          placeholder="Password"
-          value={password}
-          setValue={setPassword}
-          secureTextEntry={true}
-        />
-        <CustomButton text="Sign In" onPress={onSignInPress} />
+
         <CustomButton
           text="Forgot Password"
           onPress={onForgotPasswordPressed}
@@ -96,4 +123,7 @@ const styles = StyleSheet.create({
     fontSize: 34,
     alignSelf: "right",
   },
+  buttons:{
+     
+  }
 });
