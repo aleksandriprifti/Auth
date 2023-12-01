@@ -64,17 +64,27 @@ const SignInScreen = () => {
           <Text style={styles.text}>{text}</Text>
         </View>
         <View style={styles.buttons}>
-          <TextInput
-            placeholder="Email"
-            onChangeText={(text) => setEmail(text)}
-            value={email}
-          />
-          <TextInput
-            placeholder="Password"
-            value={password}
-            onChangeText={(text) => setPassword(text)}
-            secureTextEntry={true}
-          />
+        < style={styles.root}>
+        <Text style={styles.title}>Create An Account</Text>
+        <CustomInput
+          placeholder="Username"
+          value={userName}
+          setValue={setUserName}
+        />
+        <CustomInput placeholder="Email" value={email} setValue={setEmail} />
+        <CustomInput
+          placeholder="Password"
+          value={password}
+          setValue={setPassword}
+          secureTextEntry={true}
+        />
+        <CustomInput
+          placeholder="Repeat Password"
+          value={passwordRepeat}
+          setValue={SetPasswordRepeat}
+          secureTextEntry={true}
+        />
+
         </View>
 
         <CustomButton
@@ -123,7 +133,6 @@ const styles = StyleSheet.create({
     fontSize: 34,
     alignSelf: "right",
   },
-  buttons:{
-     
-  }
+
+  buttons: {},
 });
